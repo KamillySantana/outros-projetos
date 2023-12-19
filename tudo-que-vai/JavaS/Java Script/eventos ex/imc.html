@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imc</title>
+</head>
+<body>
+
+    <input type="number" id="massa" placeholder="Informe seu peso">
+    <input type="number" id="altura" placeholder="Informe sua altura">
+    <button id="calcular">Calcule o IMC</button>
+
+    <div id="exibe"></div>
+
+    <script>
+        var massa = document.getElementById("massa")
+        var altura = document.getElementById("altura")
+        var calcular = document.getElementById("calcular")
+        var exibe = document.getElementById("exibe")
+
+        function resultado(){
+            var valor1 = parseFloat (massa.value)
+            var valor2 = parseFloat (altura.value)
+
+            var conta = valor1 / (valor2 * 2)
+            conta = conta.toFixed(1)
+            exibe.innerHTML = conta
+        }
+
+        calcular.addEventListener("click", resultado)
+    </script>
+</body>
+</html>

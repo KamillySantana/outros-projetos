@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formCep">
+        <input type="text" name="cep">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        // Variavel que armazena um valor
+        var form = document.querySelector("#formCEP")
+
+        // Adiciona um evento de submit no formulario
+        form.addEventListener("submit", function(event) {
+            event.preventDefault() // Evita que o formulario seja enviado
+
+            // Variavel que armazena um valor do input do formulario
+            var cep = document.querySelector("input[name=cep]").value
+
+            // A variavel url recebe o valor da variavel cep concatenada com a url da api
+            var url = "https://viacep.com.br/ws/" + cep + "/json/"
+
+            // Faz uma requisição para a api e retorna um json
+            fetch(url)
+                .then(function(response) {
+                    return response.json() // Transforma o json em um objeto
+                })
+                // A variavel data recebe o objeto retornado pela api e é acessado os valores
+                .then(function(data) {
+                    // Variavel que armazena um elemento do html
+                    var conteudo = document.querySelector("#conteudo")
+
+                    // Adiciona um conteudo no elemento do html com os valores do objeto
+                    conteudo.innerHTML = "<p>CEP: " + data.cep + "</p>"
+                    conteudo.innerHTML += "<p>Bairro: " + data.bairro + "</p>"
+                    conteudo.innerHTML += "<p>Cidade: " + data.localidade + "</p>"
+                    conteudo.innerHTML += "<p>Logradouro: " + data.logradouro + "</p>"
+                    conteudo.innerHTML += "<p>Complemento: " + data.complemento + "</p>"
+                })
+        })
+    </script>
+</body>
+</html>

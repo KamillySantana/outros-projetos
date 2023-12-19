@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="autocomplete">
+    <ul id="lista"></ul>
+    <!-- para criar uma lista de opções do estados -->
+
+    <script>
+        const estados = ["Amapá", "Amazonas", "Bahia", "Ceará", "Espírito Santo", "Goiás", "Igor", "Maranhão", "Mato Grosso", "Mato Grosso do Sul",
+        "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", 
+        "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins", "Distrito Federal"];
+        // Uma constante que esta armazenando os nomes dos estados do Brasil
+
+        var autocomplete = document.getElementById("autocomplete") // captuar o conteudo do input e salvar na variavel
+        var lista = document.getElementById("lista")
+
+        // showAutocompleteOptions, essa função é responsável por mostrar as opções da lista correspondentes ao que o usuário está digitando na caixa de texto.
+        autocomplete.addEventListener("input", showAutocompleteOptions);
+
+        function showAutocompleteOptions() {
+            var auto = autocomplete.value.toLowerCase(); // value é usado para obter o valor atualmente digitado pelo usuário na caixa de entrada. 
+            // toLowerCase() é chamado para converter o texto em letras minúsculas.
+
+            lista.innerHTML = ''; // Ao atribuir uma string vazia ao innerHTML do elemento lista, todo o conteúdo HTML sera é removido, ou seja, todas as opções de autocomplete anteriores são excluídas,
+            // isso é necessário para que uma nova lista de opções de autocomplete possa ser gerada dinamicamente, de acordo com o texto digitado pelo usuário.
+            
+            // filter ele vai começar a filtar os estados da constante estados(a lista)
+            const filtrarEstados = estados.filter(estado => estado.toLowerCase().startsWith(auto)); // startsWith inicializa com, se eu digitei AM as letras do sestados tem que começar com AM
+            filtrarEstados.forEach(estado => {
+                const li = document.createElement('li');
+                li.textContent = estado;
+                lista.appendChild(li); // vai pegas os estados com as primeira letras que digitou e colocar na lista 
+            });
+        }
+
+    </script>
+    
+</body>
+</html>

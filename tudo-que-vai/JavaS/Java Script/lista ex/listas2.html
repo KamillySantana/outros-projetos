@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var lista = [1,7,3,9,10,24,22,15,13,90,12,9,34,67]
+        var pares = []
+
+        for(var indice = 0; indice < lista.length; indice = indice + 1){
+            var restoPorDois = lista[indice] % 5
+
+            if(restoPorDois == 0) {
+                pares.push(lista[indice])
+            }
+        }
+
+        console.log(lista)
+        console.log(pares)
+    </script>
+</body>
+</html>

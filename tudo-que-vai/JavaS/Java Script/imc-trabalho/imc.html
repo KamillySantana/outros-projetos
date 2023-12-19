@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Imc</title>
+</head>
+<body>
+    <h1>Calcule seu IMC</h1>
+
+    <div class="valores">
+        <input type="number" id="massa" placeholder="Informe seu peso">
+        <input type="number" id="altura" placeholder="Informe sua altura">
+        <button id="calcular">Calcule</button>
+    </div>
+
+    <div id="exibe"></div>
+
+    <script>
+        var massa = document.getElementById("massa")
+        var altura = document.getElementById("altura")
+        var calcular = document.getElementById("calcular")
+        var exibe = document.getElementById("exibe")
+
+        function resultado(){
+            var valor = parseFloat(massa.value)
+            var valor2 = parseFloat(altura.value)
+
+            var conta = valor / (valor2 * valor2)
+            conta = conta.toFixed(1)
+            // exibe.innerHTML = ("Seu IMC é de " + conta)
+
+            if(conta < 18.5){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "ABAIXO DO PESO " + "<br><br>" + "Você está abaixo do peso ideal. Isso pode ser um sinal de desnutrição ou de algum problema de saúde.")
+            }else if(conta >= 18.5 && conta <= 24.9){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "PESO NORMAL" + "<br><br>" + "Parabéns, você está com o peso normal. Sempre mantenha hábitos saudáveis em seu dia a dia.")
+            }else if(conta >= 25.0 && conta <= 29.9){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "SOBREPESO" + "<br><br>" + "Você tem apenas alguns quilos a mais do que o ideal, isso ja pode desenvolver algumas doenças.")
+            }else if(conta >= 30.0 && conta <= 34.9){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "OBESIDADE GRAU I" + "<br><br>" + "Sinal de alerta! O excesso de peso é fator de risco para desenvolvimento de outros problemas de saúde.")
+            }else if(conta >= 35.0 && conta <= 39.9){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "OBESIDADE GRAU II" + "<br><br>" + "Sinal vermelho! Ao atingir este nível de IMC, o risco de doenças associadas está entre alto e muito alto. Busque ajuda de um profissional de saúde.")
+            }else if(conta >= 40.0 ){
+                exibe.innerHTML = ("Seu IMC é de " + conta + "<br><br>" + "OBESIDADE GRAU III" + "<br><br>" + "Sinal vermelho! Ao atingir este nível de IMC, o risco de doenças associadas está muito alto. Busque ajuda de um profissional de saúde.")
+            }
+        }
+
+        calcular.addEventListener("click", resultado)
+    </script>
+</body>
+</html>

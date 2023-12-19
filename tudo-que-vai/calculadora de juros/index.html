@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>calculadora</title>
+</head>
+<body>
+     <div class="container">
+        <h1>Calculadora de Juros</h1>
+        
+        <label for="principal">Valor Capital:</label>
+        <input type="number" id="capital" placeholder="Digite o valor do capital" required>
+        
+        <label for="taxa">Taxa de Juros (%):</label>
+        <input type="number" id="taxa" placeholder="Digite a taxa de juros" required>
+        
+        <label for="periodo">Período (em meses):</label>
+        <input type="number" id="periodo" placeholder="Digite o período em meses" required>
+        
+        <button id="botao">Calcular</button>
+        
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+
+        var botao = document.getElementById("botao")
+        botao.addEventListener("click", calcularJuros)
+
+        function calcularJuros() {
+            
+            // parseFloat e int é convertido em um número decimal e armazenado na variável capital
+            // os dois para obter o valor numérico dos campos de entrada
+            var capital = parseFloat(document.getElementById("capital").value) 
+            var taxa = parseFloat(document.getElementById("taxa").value)
+            var periodo = parseInt(document.getElementById("periodo").value)
+
+            var taxaDecimal = taxa / 100
+            var jurosSimples = capital * taxaDecimal * periodo
+            var montanteSimples = capital + jurosSimples
+
+            var jurosComposto = capital * (1 + taxaDecimal) ** periodo
+
+            var resultado = document.getElementById("resultado")
+            resultado.innerHTML = '<div class="juros">' +
+            'Juros Simples: R$ ' + jurosSimples.toFixed(2) + '<br>' +
+            'Montante juros simples: R$ ' + montanteSimples.toFixed(2) + '<br>' +
+            'Juros Composto: R$ ' + jurosComposto.toFixed(2) +
+            '</div>'
+        }
+    </script>
+</body>
+</html>

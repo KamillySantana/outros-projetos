@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>media</title>
+</head>
+<body>
+    <div id="div-pro-botao">
+        <button id="btn">Exibir os alunos e suas notas</button>
+    </div>
+
+    <div id="exibe"></div>
+
+    <div id="media">
+        <h4><strong>Escolha a média a ser calculada</strong></h4>
+
+        <select id="selecionarMedia">
+            <option value="aritmetica">Média Aritmética</option>
+            <option value="ponderada">Média Ponderada</option>
+        </select>
+        
+        <div>
+            <button id="calcularMedia">Calcular Média</button>
+        </div>
+    </div>
+
+    <div id="adicionar">
+        <h4><strong>Adicione o aluno e suas notas</strong></h4>
+        <input type="text" id="nome" placeholder="Nome do Aluno">
+        <input type="number" id="nota1" placeholder="Nota 1">
+        <input type="number" id="nota2" placeholder="Nota 2">
+        <input type="number" id="nota3" placeholder="Nota 3">
+        <input type="number" id="nota4" placeholder="Nota 4">
+        <input type="number" id="nota5" placeholder="Nota 5">
+        <div>
+            <button id="adicionarBtn">Adicionar</button>
+        </div>
+
+        <div id="peso">
+            <h4><strong>Escolha os peso das notas na Média Ponderada</strong></h4>
+            <input type="number" id="peso1" placeholder="Peso da Nota 1">
+            <input type="number" id="peso2" placeholder="Peso da Nota 2">
+            <input type="number" id="peso3" placeholder="Peso da Nota 3">
+            <input type="number" id="peso4" placeholder="Peso da Nota 4">
+            <input type="number" id="peso5" placeholder="Peso da Nota 5">
+            
+        </div>
+    </div>
+
+<!-- JAVA SCRIPT -->
+    <script>
+
+        var alunos = {
+            notas: [
+                {
+                    nome: "Juliano",
+                    nota1: 10,
+                    nota2: 8,
+                    nota3: 9,
+                    nota4: 6,
+                    nota5: 9
+                }
+            ],
+
+            adicionar(alunoEnotas) {
+                this.notas.push(alunoEnotas)
+            },
+            
+        }
+
+        var exibe = document.getElementById("exibe")
+        var mostrarAluno = document.getElementById("btn")
+        
+        mostrarAluno.addEventListener("click", mostrar)
+
+        function mostrar() {
+            var listaExibir = []
+
+            function exibiInformacoes(dados) {
+                listaExibir += '<div class="dadosCalopsita">' // Abre div
+
+                listaExibir += 'Nome: ' + dados.nome + '<br>'
+                listaExibir += '1° nota: ' + dados.nota1 + '<br>'
+                listaExibir += '2° nota: ' + dados.nota2 + '<br>'
+                listaExibir += '3° nota: ' + dados.nota3 + '<br>'
+                listaExibir += '4° nota: ' + dados.nota4 + '<br>'
+                listaExibir += '5° nota: ' + dados.nota5 + '<br>'
+
+                listaExibir += '</div>' // Fecha div
+            }
+
+            alunos.notas.forEach(exibiInformacoes)
+
+            exibe.innerHTML = listaExibir
+        }
+// ------------------------------------------CALCULAR MEDIAS-------------------------------------------------- //
+        var calcularMediaBtn = document.getElementById("calcularMedia")
+        calcularMediaBtn.addEventListener("click", calcularMedia)
+
+        function calcularMedia() {
+            var selectedOption = document.getElementById("selecionarMedia").value
+
+            var pesos = { // obj
+                peso1: parseFloat(document.getElementById("peso1").value),
+                peso2: parseFloat(document.getElementById("peso2").value),
+                peso3: parseFloat(document.getElementById("peso3").value),
+                peso4: parseFloat(document.getElementById("peso4").value),
+                peso5: parseFloat(document.getElementById("peso5").value)
+            }
+
+            var listaExibir = []
+
+            function exibiInformacoes(dados) {
+                listaExibir += '<div class="dadosCalopsita">' // Abre div
+
+                listaExibir += 'Nome: ' + dados.nome + '<br>'
+                listaExibir += '1° nota: ' + dados.nota1 + '<br>'
+                listaExibir += '2° nota: ' + dados.nota2 + '<br>'
+                listaExibir += '3° nota: ' + dados.nota3 + '<br>'
+                listaExibir += '4° nota: ' + dados.nota4 + '<br>'
+                listaExibir += '5° nota: ' + dados.nota5 + '<br>'
+
+                // Cálculo da média
+                var media = 0;
+
+                if (selectedOption === "aritmetica") {
+
+                    var somaNotas = dados.nota1 + dados.nota2 + dados.nota3 + dados.nota4 + dados.nota5
+                    media = somaNotas / 5
+                    listaExibir += "Média Aritmética: " + media + "<br>"
+
+                } else if (selectedOption === "ponderada") {
+
+                    var somaNotas = (dados.nota1 * pesos.peso1) + (dados.nota2 * pesos.peso2) + (dados.nota3 * pesos.peso3) + (dados.nota4 * pesos.peso4) + (dados.nota5 * pesos.peso5)
+                    var somaPesos = pesos.peso1 + pesos.peso2 + pesos.peso3 + pesos.peso4 + pesos.peso5
+                    media = somaNotas / somaPesos
+                    listaExibir += "Média Ponderada: " + media + "<br>"
+                }
+
+                // Verificação de aprovação, exame ou reprovação
+                if (media >= 7) {
+                    listaExibir += "Situação: Aprovado<br>";
+                } else if (media >= 5 && media < 7) {
+                    listaExibir += "Situação: Em exame<br>";
+                } else {
+                    listaExibir += "Situação: Reprovado<br>";
+                }
+
+                listaExibir += '</div>' // Fecha div
+            }
+
+            alunos.notas.forEach(exibiInformacoes)
+
+            exibe.innerHTML = listaExibir
+        }
+
+// ---------------------------------------ADICIONAR-------------------------------------------- //
+        var btnAdicionar = document.getElementById("adicionarBtn")
+
+        btnAdicionar.addEventListener("click", adicionar)
+
+        function adicionar() {
+            var nome = document.getElementById("nome").value
+            var nota1 = parseFloat(document.getElementById("nota1").value)
+            var nota2 = parseFloat(document.getElementById("nota2").value)
+            var nota3 = parseFloat(document.getElementById("nota3").value)
+            var nota4 = parseFloat(document.getElementById("nota4").value)
+            var nota5 = parseFloat(document.getElementById("nota5").value)
+
+            var obj = {
+                nome: nome,
+                nota1: nota1,
+                nota2: nota2,
+                nota3: nota3,
+                nota4: nota4,
+                nota5: nota5
+            }
+
+            alunos.adicionar(obj)
+
+            mostrar()
+        }
+
+    </script>
+</body>
+</html>

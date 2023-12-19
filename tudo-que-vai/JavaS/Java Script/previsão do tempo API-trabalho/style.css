@@ -1,0 +1,56 @@
+:root{
+    --cor--principal: rgb(230, 152, 230);
+    --cor--botao:#e4edfb;
+    --cor--pclima:#f1def7;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+form h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--cor--principal);
+    color: rgb(241, 241, 241);
+}
+
+div button {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--cor--botao);
+    font-size: 20px;
+}
+
+.lugares{
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+}
+
+.lugares button{
+    cursor: pointer;
+}
+
+.valores {
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+    background-color: var(--cor--pclima);
+    display: block;
+    margin: 0 auto;
+}
+
+@media(max-width: 420px) {
+    .lugares {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        gap: 10px;
+    }
+
+    .valores {
+        width: 30%;
+    }
+}

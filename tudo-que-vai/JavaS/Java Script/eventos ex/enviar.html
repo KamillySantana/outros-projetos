@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="txt">
+    <button id="enviar">Envia</button>
+
+    <script>
+        var txt = document.getElementById("txt")
+        var envia = document.getElementById("enviar")
+
+        function capturarDadosDoInput(){
+            var valor = txt.value
+            alert(valor)
+        }
+
+        envia.addEventListener("click", capturarDadosDoInput)
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --cor--azul: #a3ced7;
+    --cor--cinza: #cecece;
+}
+
+#media, #div-pro-botao, #adicionar, #peso, #exibe{
+    text-align: center;
+    padding: 15px;
+}
+
+#media div{
+    padding: 10px;
+}
+
+#selecionarMedia {
+    border: none;
+    font-size: 20px;
+    padding: 15px;
+}
+
+#adicionar{
+    margin: 0px 50px;
+    background-color: #fff;
+    padding: 30px 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#adicionar input{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+#adicionar button, #div-pro-botao button, #media button{
+    background-color: var(--cor--azul);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#adicionar button:hover{
+    background-color: var(--cor--cinza);
+    cursor: pointer;
+}
+
+#adicionar h4, #media h4, #peso h4 {
+    margin: 25px 50px;
+    color: #7fabb4;
+    font-size: 25px;
+}
+
+#exibe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+    gap: 20px;
+}
+
+.dadosCalopsita {
+    border-radius: 10px;
+    border: 7px solid var(--cor--azul);
+    padding: 10px;
+}

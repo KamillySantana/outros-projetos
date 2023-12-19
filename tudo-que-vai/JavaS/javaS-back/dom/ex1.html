@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Olá, mundo!</h1>
+    
+    <p>oiii</p>
+    <p id="papagrafo">Este é um parágrafo.</p>
+    <p class="amigurumi">Barbara</p>
+    <p>hahaha</p>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        var papagrafo = document.getElementById("papagrafo")
+        var amigurumi = document.getElementsByClassName("amigurumi")
+        var lista = document.getElementsByTagName('ul')
+        var um = document.querySelector("p")
+        var todos = document.querySelectorAll("p")
+
+        // Alterar o conteúdo de texto do elemento "papagrafo"
+        papagrafo.textContent = "Novo conteúdo de texto"
+
+        // Alterar a classe do elemento da variavel "um" que é o primeiro paragrafo
+        um.setAttribute("class", "novo-estilo")
+
+        // Alterar o estilo do "papagrafo" o segundo "p"
+        papagrafo.style.color = "red"
+
+        // Criar um novo elemento <p> e adicioná-lo ao final do corpo do documento
+        var novoParagrafo = document.createElement("p")
+        novoParagrafo.textContent = "Novo parágrafo adicionado ao final!"
+        document.body.appendChild(novoParagrafo)
+
+        // Remover o elemento com a classe "amigurumi"
+        var elementoRemover = amigurumi[0]
+        elementoRemover.parentNode.removeChild(elementoRemover)
+    </script>
+</body>
+</html>

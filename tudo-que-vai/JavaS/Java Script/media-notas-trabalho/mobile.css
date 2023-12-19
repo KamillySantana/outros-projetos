@@ -1,0 +1,17 @@
+@media(max-width: 426px) {
+    #adicionar h4, #media h4, #peso h4 {
+        margin: 10px 0px;
+    }
+}
+
+@media(max-width: 376px) {
+    #adicionar{
+        padding: 0px;
+    }
+}
+
+@media(max-width: 321px) {
+    #adicionar{
+        box-shadow: none;
+    }
+}

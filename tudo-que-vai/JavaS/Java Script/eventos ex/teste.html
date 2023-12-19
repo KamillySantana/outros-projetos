@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="exibe"></span>
+    <input type="text" id="texto" />
+
+    <br><br>
+    <hr>
+    <br><br>
+
+    <input type="text" id="txt">
+    <button id="envia">Envia</button>
+
+    <br><br>
+    <hr>
+    <br><br>
+
+    <form action="" id="formulario">
+        <input type="text" name="calopsita">
+        <input type="text" name="tartaruga">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        var form = document.getElementById("formulario")
+
+        function enviaForm(event) {
+            event.preventDefault()
+            
+            var dados = new FormData(this)
+            var calopsita = dados.get("calopsita")
+            var tartaruga = dados.get("tartaruga")
+            alert(calopsita)
+            alert(tartaruga)
+        }
+ 
+        form.addEventListener("submit", enviaForm)
+        
+ 
+ 
+ 
+ 
+ 
+        var txt = document.getElementById("txt")
+        var envia = document.getElementById("envia")
+
+        function capturaDadosDoInput() {
+            var valor = txt.value
+            alert(valor)
+        }
+
+        envia.addEventListener("click", capturaDadosDoInput)

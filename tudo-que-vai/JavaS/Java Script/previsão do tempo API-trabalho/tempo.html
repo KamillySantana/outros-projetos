@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clima</title>
+</head>
+<body>
+    <form id="previsao">
+        <h1>Escolha uma cidade para ver a previsão do tempo</h1>
+        <div class="lugares">
+            <button type="submit" data-lat="-21.2892" data-lon="-50.3411">Birigui</button>
+            <button type="submit" data-lat="-21.2115" data-lon="-50.4261">Araçatuba</button>
+            <button type="submit" data-lat="-21.064" data-lon="-50.1425">Buritama</button>
+            <button type="submit" data-lat="-23.5489" data-lon="-46.6388">São Paulo</button>
+            <button type="submit" data-lat="-27.9562" data-lon="-49.8734">Urupema</button>
+            <!-- Nessa linha foi colocado um botão que quando a pessoa clica nele vai aparecer 
+              e selecionar a cidade de Birigui, no caso o clima dela, além disso ultilizamos dois 
+              atributos do html que é data-lat e o data-lon que armezanas as cordenadas geograficas 
+              de um local, normalmente são ultilizados em JavaScript para construir uma URL da API de 
+              previsão do tempo. -->
+        </div>
+      </form>
+      
+      <div id="conteudo"></div>
+      <!-- É usada para exibir as informações sobre o clima obtidas da API de previsão do tempo em 
+        JavaScript, ou seja quando o usuário clica em um dos botões das cidades é feita uma solicitação 
+        para a API de previsão do tempo usando as coordenadas geográficas da cidade selecionada, e esses 
+        dados são exibidos na div -->
+      
+      <script>
+        var form = document.querySelector("#previsao");
+        // O método querySelector permite selecionar elementos HTML usando seletores CSS. No caso dessa 
+        // linha de código, o seletor #previsao corresponde a um elemento que possui um atributo id com 
+        // valor "previsao", ao fazer isso a linha de código está armazenando esse elemento HTML em uma 
+        // variável chamada form.
+      
+        form.addEventListener("submit", function(event) {
+          event.preventDefault(); // é usado para buscar informações de previsão do tempo da API e 
+          // atualizar a página com as informações obtidas, sem que a página seja recarregada
+          
+          var lat = event.submitter.dataset.lat;
+          var lon = event.submitter.dataset.lon; // é usada para obter os valores de atributos de dados 
+          // personalizados que são definidos nos botões de cidade
+
+          // O dataset é usada para acessar os valores dos atributos de dados personalizados, no caso as 
+          // lat e lon colocada dos botões. O submitter é uma propriedade do objeto event que significa que 
+          // o botão de cidade que foi clicado.
+
+          
+          var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=4afebf9d393081ab2dab09c0c0879c16&units=metric`;
+          
+          fetch(url)
+            .then(function(response) {
+              return response.json();
+            }) // estão fazendo uma requisição HTTP para a URL especificada, a nossa API, e em seguida, processando 
+            // a resposta da requisição e retorna em formato de JSON
+
+            .then(function(data) {
+              console.log(data);
+              var conteudo = document.getElementById("conteudo");
+              // Para selecionar o elemento com o ID "conteudo" e atribui a variável conteudo
+              // É usada para atualizar o conteúdo da div com o ID conteudo com informações sobre a previsão do tempo obtida da API
+      
+              conteudo.innerHTML = "<p class='valores'> País: " + data.sys.country + " </p>";
+              conteudo.innerHTML += "<p class='valores'> Cidade: " + data.name + " </p>";
+              conteudo.innerHTML += "<p class='valores'> Temperatura: " + data.main.temp + " </p>";
+              conteudo.innerHTML += "<p class='valores'> Temperatura máxima: " + data.main.temp_max + " </p>";
+              conteudo.innerHTML += "<p class='valores'> Temperatura mínima: " + data.main.temp_min + " </p>";
+              conteudo.innerHTML += "<p class='valores'> Céu: " + data.weather[0].main + " </p>";
+              conteudo.innerHTML += "<img class='valores' src='https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png' />" 
+            });
+        });
+      </script>   
+    
+</body>
+</html>

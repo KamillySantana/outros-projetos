@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var matriz = [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ]
+
+        var maior = 0
+        var menor = matriz[0][0]
+
+        for(var linha = 0; linha < matriz.length; linha = linha + 1) {
+            for(var coluna = 0; coluna < matriz[linha].length; coluna++){
+                
+                if(matriz[linha][coluna] > maior){
+                    maior = matriz[linha][coluna]
+                }
+
+                if(matriz[linha][coluna] < menor){
+                    menor = matriz[linha][coluna]
+                }
+            }
+        }
+        console.log(maior)
+        console.log(menor)
+        
+    </script>
+</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudar</title>
+</head>
+<body>
+    
+    <script>
+        var pessoa = {
+            nome: "Jacinto",
+            idade: 35,
+            profissao: "Carpinteiro",
+
+            endereco: {
+                rua: "Ruba Osvaldo B",
+                cidade: "Birigui",
+                estado: "SP",
+            },
+
+            apresentar(){
+                console.log("Ola meu nome é " + this.nome + ", eu tenho " + this.idade + " anos e sou um " + this.profissao)
+            },
+
+            moradia(){
+                console.log("Moro na rua" + this.endereco.rua + ", na cidade de " + this.endereco.cidade + " e no estado de " + this.endereco.estado)
+            }
+        }
+
+        pessoa.idade = 37
+        pessoa.profissao = "Fazendeiro"
+        delete pessoa.profissao
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  label {
+    color: #a788ab;
+    margin-bottom: 5px;
+  }
+  
+  input[type="number"] {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #a788ab;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer
+  }
+  
+  #resultado {
+    margin-top: 20px;
+  }
+  
+  .juros {
+    margin-top: 10px;
+    color: #a788ab;
+  }
+  
+  input:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
